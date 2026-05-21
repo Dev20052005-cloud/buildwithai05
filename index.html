@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArenaPi | Esports Fan Retention Platform</title>
+    <!-- Icons and Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/core.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+    <!-- SVG Gradients for Progress Circles and borders -->
+    <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+        <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f2fe" />
+            <stop offset="100%" stop-color="#9d4edd" />
+        </linearGradient>
+    </svg>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fa-solid fa-gamepad text-gradient-primary"></i>
+            <span>Arena<span>Pi</span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="nav-link active">Home</a></li>
+            <li><a href="#demo-section" class="nav-link">Select Persona</a></li>
+            <li><a href="leaderboard.html" class="nav-link">Leaderboard</a></li>
+        </ul>
+        <div class="nav-profile">
+            <a href="#demo-section" class="btn btn-primary">
+                <i class="fa-solid fa-right-to-bracket"></i> Enter Arena
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero-section animate-slide-up">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-bolt"></i> AI-Powered Fan Retention
+                </div>
+                <h1 class="hero-title">
+                    Transform Viewers into <br>
+                    <span class="text-gradient-primary glow-text-primary">Active Participants</span>
+                </h1>
+                <p class="hero-description">
+                    ArenaPi maximizes tournament retention using dynamic prediction pools, streak amplification, level-up trees, and AI-personalized loyalty missions.
+                </p>
+                <div class="hero-actions">
+                    <a href="#demo-section" class="btn btn-primary btn-lg">
+                        Choose Fan Persona <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="leaderboard.html" class="btn btn-secondary">
+                        View Live Standings
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">+142%</div>
+                        <div class="stat-label">Retention Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">50K+</div>
+                        <div class="stat-label">Predictions Cast</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">&lt; 3.2s</div>
+                        <div class="stat-label">Avg. User Action</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teaser Match Interactive Card -->
+            <div class="hero-visual">
+                <div class="hero-preview-glow"></div>
+                <div class="hero-card-teaser glass-panel match-card live animate-pulse-glow" id="teaser-match-card">
+                    <div class="match-header">
+                        <div class="match-badge live">
+                            <i class="fa-solid fa-circle"></i> Live Preview
+                        </div>
+                        <div class="match-title">VALORANT CHAMPIONS GRAND FINAL</div>
+                    </div>
+                    <div class="match-versus">
+                        <div class="match-team" id="teaser-team-a" data-team="Sentinels">
+                            <img src="https://api.dicebear.com/7.x/identicon/svg?seed=Sentinels" alt="Sentinels Logo">
+                            <div class="match-team-name">Sentinels</div>
+                        </div>
+                        <div class="match-vs-divider">VS</div>
+                        <div class="match-team" id="teaser-team-b" data-team="Fnatic">
+                            <img src="https://api.dicebear.com/7.x/identicon/svg?seed=Fnatic" alt="Fnatic Logo">
+                            <div class="match-team-name">Fnatic</div>
+                        </div>
+                    </div>
+                    <div class="match-prediction-bar">
+                        <div class="match-prediction-fill-left" style="width: 50%" id="teaser-bar-left"></div>
+                        <div class="match-prediction-fill-right" style="width: 50%" id="teaser-bar-right"></div>
+                    </div>
+                    <div class="match-prediction-stats">
+                        <span id="teaser-votes-left">50% Community</span>
+                        <span id="teaser-votes-right">50% Community</span>
+                    </div>
+                    <div style="margin-top: 15px; text-align: center; font-size: 0.8rem; color: var(--color-text-muted);">
+                        <i class="fa-solid fa-circle-info text-gradient-primary"></i> Try clicking a team to vote!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Profile Picker Section -->
+        <section id="demo-section" style="padding: 40px 0 100px 0;">
+            <h2 class="profile-selector-title">
+                Choose a Fan Persona for the <span class="text-gradient-accent">Adaptive Demo</span>
+            </h2>
+            <p style="text-align: center; color: var(--color-text-muted); margin-bottom: 45px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Each profile starts with a customized team preference. The AI engine updates dashboard missions, streaks, and double-XP rewards dynamically based on your support profile.
+            </p>
+
+            <div class="profile-select-grid">
+                <!-- Aman Profile (Team India) -->
+                <div class="profile-card glass-panel" data-name="Aman" data-team="Team India">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Aman" alt="Aman Avatar" class="profile-avatar-large">
+                    <h3 class="profile-name">Aman</h3>
+                    <div class="profile-team">Supports Team India</div>
+                    <p class="profile-motto">"Let's bring the cup home. Blue sparks only."</p>
+                    <button class="btn btn-primary" style="margin-top: 20px; width: 100%;">Activate Persona</button>
+                </div>
+
+                <!-- Sarah Profile (Sentinels) -->
+                <div class="profile-card glass-panel" data-name="Sarah" data-team="Sentinels">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Sarah" alt="Sarah Avatar" class="profile-avatar-large">
+                    <h3 class="profile-name">Sarah</h3>
+                    <div class="profile-team">Supports Sentinels</div>
+                    <p class="profile-motto">"Sentinels all the way. Watch the win streak fly!"</p>
+                    <button class="btn btn-primary" style="margin-top: 20px; width: 100%;">Activate Persona</button>
+                </div>
+
+                <!-- Alex Profile (Team USA) -->
+                <div class="profile-card glass-panel" data-name="Alex" data-team="Team USA">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Alex" alt="Alex Avatar" class="profile-avatar-large">
+                    <h3 class="profile-name">Alex</h3>
+                    <div class="profile-team">Supports Team USA</div>
+                    <p class="profile-motto">"USA Esports dominance is real. Ready to lock it."</p>
+                    <button class="btn btn-primary" style="margin-top: 20px; width: 100%;">Activate Persona</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JS Files -->
+    <script src="js/state.js"></script>
+    <script src="js/landing.js"></script>
+</body>
+</html>

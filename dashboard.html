@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArenaPi | Dashboard</title>
+    <!-- Icons and Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/core.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+    <!-- Canvas for confetti explosion -->
+    <canvas id="confetti-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999;"></canvas>
+
+    <!-- SVG Gradients for circular progress -->
+    <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+        <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f2fe" />
+            <stop offset="100%" stop-color="#9d4edd" />
+        </linearGradient>
+    </svg>
+
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fa-solid fa-gamepad text-gradient-primary"></i>
+            <span>Arena<span>Pi</span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="#" class="nav-link active">Dashboard</a></li>
+            <li><a href="leaderboard.html" class="nav-link">Leaderboard</a></li>
+        </ul>
+        <div class="nav-profile">
+            <!-- Streak Flame Widget -->
+            <div class="streak-indicator" id="streak-indicator" title="Consecutive active days streak!">
+                <i class="fa-solid fa-fire animate-flame"></i>
+                <span class="streak-count" id="streak-count">0</span>
+            </div>
+            <!-- PiPoints Wallet Display -->
+            <div class="pipoints-display" id="pipoints-display" title="Staking Points balance!">
+                <i class="fa-solid fa-coins text-gradient-accent animate-pulse-glow"></i>
+                <span id="user-points-val">150</span>
+            </div>
+            <!-- Profile Avatar and Level Info -->
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Gamer" alt="User Avatar" class="table-user-avatar" id="nav-avatar">
+            <span class="table-username" id="nav-username">Gamer</span>
+        </div>
+    </nav>
+
+    <!-- Dashboard Grid Workspace (Three Column Console) -->
+    <main class="container">
+        <div class="dashboard-grid">
+            
+            <!-- COLUMN 1: MATCH PREDICTIONS ARENA -->
+            <div class="dashboard-main-col">
+                
+                <!-- XP progression banner -->
+                <div class="glass-panel xp-widget animate-slide-up">
+                    <div class="progress-circle-container">
+                        <svg class="progress-circle" width="80" height="80">
+                            <circle class="progress-circle-bg" cx="40" cy="40" r="34"></circle>
+                            <circle class="progress-circle-fill" id="xp-circle-fill" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6"></circle>
+                        </svg>
+                        <div class="progress-circle-text" id="xp-level-text">1</div>
+                    </div>
+                    <div class="xp-details">
+                        <div class="xp-title">Level Progression</div>
+                        <div class="xp-level-badge"><span id="xp-percentage-number">0</span>% Completed</div>
+                        <div class="xp-bar-text"><span id="xp-current">0</span> / <span id="xp-max">100</span> XP</div>
+                    </div>
+                    <!-- Booster Inventory indicators -->
+                    <div id="booster-badges" style="display:flex; gap:8px; margin-left:20px;">
+                        <span id="shield-badge-indicator" class="match-badge upcoming" style="display:none; font-size:0.65rem;" title="Streak Shield Active!"><i class="fa-solid fa-shield-halved"></i> Shielded</span>
+                        <span id="doublexp-badge-indicator" class="match-badge live" style="display:none; font-size:0.65rem;" title="Double XP active on next predictions!"><i class="fa-solid fa-bolt"></i> 2x XP (<span id="doublexp-count-val">0</span>)</span>
+                    </div>
+                </div>
+
+                <!-- Match Predictions Center -->
+                <div class="glass-panel" style="padding: 24px;">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <i class="fa-solid fa-crosshairs"></i> Matches Arena
+                        </div>
+                        <!-- Match filter tabs -->
+                        <div class="dashboard-tabs">
+                            <button class="tab-btn active" id="tab-live">Live</button>
+                            <button class="tab-btn" id="tab-upcoming">Upcoming</button>
+                            <button class="tab-btn" id="tab-settled">Settled</button>
+                        </div>
+                    </div>
+
+                    <!-- Matches List -->
+                    <div class="matches-grid" id="matches-container">
+                        <!-- Skeletons showing during initial load simulation -->
+                        <div class="glass-panel match-card skeleton" style="height: 180px;"></div>
+                        <div class="glass-panel match-card skeleton" style="height: 180px;"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- COLUMN 2: LIVE FAN CHAT FEED -->
+            <div class="dashboard-chat-col">
+                <div class="glass-panel sidebar-box" style="height: 100%;">
+                    <h3 class="sidebar-heading">
+                        <i class="fa-solid fa-comments"></i> Arena Chat
+                    </h3>
+                    <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: -12px; margin-bottom: 20px;">
+                        Real-time fan reactions syncing with match scoreboards.
+                    </p>
+                    <div class="chat-box" id="live-chat-box">
+                        <!-- Filled dynamically by tick events -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMN 3: MISSIONS & REWARDS SHOP -->
+            <div class="dashboard-side-col">
+                
+                <!-- Personalized Quests / Missions panel -->
+                <div class="glass-panel sidebar-box">
+                    <h3 class="sidebar-heading">
+                        <i class="fa-solid fa-bullseye"></i> Personalized Missions
+                    </h3>
+                    <div class="missions-list" id="missions-container">
+                        <!-- Filled dynamically by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Points Reward Shop panel -->
+                <div class="glass-panel sidebar-box">
+                    <h3 class="sidebar-heading">
+                        <i class="fa-solid fa-shop"></i> Rewards Shop
+                    </h3>
+                    <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: -12px; margin-bottom: 15px;">
+                        Exchange PiPoints for boosters & crown profiles.
+                    </p>
+                    <div class="shop-grid" id="shop-container">
+                        <!-- Filled dynamically by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Achievements panel -->
+                <div class="glass-panel sidebar-box">
+                    <h3 class="sidebar-heading">
+                        <i class="fa-solid fa-award"></i> Unlockable Badges
+                    </h3>
+                    <div class="badge-grid" id="badges-container">
+                        <!-- Filled dynamically by JavaScript -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Floating Level Up Notification Card -->
+    <div id="level-up-toast" class="glass-panel" style="position: fixed; bottom: 30px; right: 30px; display: flex; align-items: center; gap: 20px; padding: 20px; border-color: var(--color-accent); box-shadow: var(--glow-accent); opacity: 0; transform: translateY(40px); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 10000; pointer-events: none;">
+        <div style="font-size: 2.5rem; color: var(--color-accent); animation: pulse 1s infinite;"><i class="fa-solid fa-angles-up"></i></div>
+        <div>
+            <h4 style="color: var(--color-accent); font-family: var(--font-heading); margin-bottom: 4px;">LEVEL UP UNLOCKED!</h4>
+            <p style="font-size: 0.85rem; color: var(--color-white);">You reached Level <span id="toast-level-val">2</span>!</p>
+            <p style="font-size: 0.75rem; color: var(--color-text-muted);">Payout multipliers increased.</p>
+        </div>
+    </div>
+
+    <!-- JS Files -->
+    <script src="js/state.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

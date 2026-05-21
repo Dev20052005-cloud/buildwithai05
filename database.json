@@ -1,0 +1,128 @@
+{
+    "badges": [
+        "first_prediction",
+        "streak_3"
+    ],
+    "matches": [
+        {
+            "category": "Valorant Champions",
+            "id": "match_1",
+            "max_score": 13,
+            "status": "settled",
+            "teamA": "Sentinels",
+            "teamA_logo": "https://api.dicebear.com/7.x/identicon/svg?seed=Sentinels",
+            "teamA_odds": "1.40",
+            "teamA_score": 13,
+            "teamA_votes": 62,
+            "teamB": "Fnatic",
+            "teamB_logo": "https://api.dicebear.com/7.x/identicon/svg?seed=Fnatic",
+            "teamB_odds": "2.60",
+            "teamB_score": 9,
+            "teamB_votes": 38,
+            "time": "Finished",
+            "winner": "Sentinels"
+        },
+        {
+            "category": "Cricket Esports World Cup",
+            "id": "match_2",
+            "max_score": 200,
+            "status": "live",
+            "teamA": "Team India",
+            "teamA_logo": "https://api.dicebear.com/7.x/identicon/svg?seed=India",
+            "teamA_odds": "1.66",
+            "teamA_score": 190,
+            "teamA_votes": 75,
+            "teamB": "Team Pakistan",
+            "teamB_logo": "https://api.dicebear.com/7.x/identicon/svg?seed=Pakistan",
+            "teamB_odds": "1.94",
+            "teamB_score": 183,
+            "teamB_votes": 25,
+            "time": "LIVE - 2nd Innings",
+            "winner": null
+        },
+        {
+            "category": "LCK Summer Final",
+            "id": "match_3",
+            "max_score": 3,
+            "status": "upcoming",
+            "teamA": "T1",
+            "teamA_logo": "https://api.dicebear.com/7.x/identicon/svg?seed=T1",
+            "teamA_odds": 1.85,
+            "teamA_score": 0,
+            "teamA_votes": 55,
+            "teamB": "Gen.G",
+            "teamB_logo": "https://api.dicebear.com/7.x/identicon/svg?seed=GenG",
+            "teamB_odds": 1.95,
+            "teamB_score": 0,
+            "teamB_votes": 45,
+            "time": "Starts in 2 hours",
+            "winner": null
+        },
+        {
+            "category": "Rocket League Invitational",
+            "id": "match_4",
+            "max_score": 5,
+            "status": "upcoming",
+            "teamA": "Team USA",
+            "teamA_logo": "https://api.dicebear.com/7.x/identicon/svg?seed=USA",
+            "teamA_odds": 2.3,
+            "teamA_score": 0,
+            "teamA_votes": 41,
+            "teamB": "Team Germany",
+            "teamB_logo": "https://api.dicebear.com/7.x/identicon/svg?seed=Germany",
+            "teamB_odds": 1.6,
+            "teamB_score": 0,
+            "teamB_votes": 59,
+            "time": "Starts in 6 hours",
+            "winner": null
+        },
+        {
+            "category": "PGL Major Copenhagen",
+            "id": "match_5",
+            "max_score": 13,
+            "status": "settled",
+            "teamA": "Natus Vincere",
+            "teamA_logo": "https://api.dicebear.com/7.x/identicon/svg?seed=NaVi",
+            "teamA_odds": 1.9,
+            "teamA_score": 11,
+            "teamA_votes": 48,
+            "teamB": "G2 Esports",
+            "teamB_logo": "https://api.dicebear.com/7.x/identicon/svg?seed=G2",
+            "teamB_odds": 1.9,
+            "teamB_score": 13,
+            "teamB_votes": 52,
+            "time": "Finished",
+            "winner": "G2 Esports"
+        }
+    ],
+    "predictions": [
+        {
+            "claimed": true,
+            "matchId": "match_1",
+            "notifiedOfWin": true,
+            "oddsAtPrediction": 2.1,
+            "stakeAmount": 50,
+            "teamPredicted": "Sentinels",
+            "won": true
+        }
+    ],
+    "user": {
+        "affinity": {
+            "Sentinels": 4,
+            "Team India": 1
+        },
+        "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=Aman",
+        "claimedMissions": [],
+        "doubleXpCount": 0,
+        "favoriteTeam": "Team India",
+        "goldenGlowActive": false,
+        "lastActiveDate": "2026-05-21",
+        "level": 2,
+        "nextLevelXp": 120,
+        "piPoints": 205,
+        "streak": 4,
+        "streakShieldActive": false,
+        "username": "Aman",
+        "xp": 65
+    }
+}

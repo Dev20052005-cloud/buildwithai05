@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArenaPi | Leaderboard</title>
+    <!-- Icons and Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/core.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+    <!-- SVG Gradients for circular progress -->
+    <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+        <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f2fe" />
+            <stop offset="100%" stop-color="#9d4edd" />
+        </linearGradient>
+    </svg>
+
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fa-solid fa-gamepad text-gradient-primary"></i>
+            <span>Arena<span>Pi</span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="#" class="nav-link active">Leaderboard</a></li>
+        </ul>
+        <div class="nav-profile">
+            <!-- Streak Flame Widget -->
+            <div class="streak-indicator" id="streak-indicator">
+                <i class="fa-solid fa-fire animate-flame"></i>
+                <span class="streak-count" id="streak-count">0</span>
+            </div>
+            <!-- Profile Info -->
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Gamer" alt="User Avatar" class="table-user-avatar" id="nav-avatar">
+            <span class="table-username" id="nav-username">Gamer</span>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container animate-slide-up">
+        
+        <!-- Section Title -->
+        <div class="section-header" style="margin-bottom: 30px;">
+            <div class="section-title">
+                <i class="fa-solid fa-trophy text-gradient-primary"></i> Global Rankings
+            </div>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem;">
+                Compete with fans globally. Ranks adjust in real-time based on correct predictions.
+            </p>
+        </div>
+
+        <!-- 3D Podium Layout for Top 3 -->
+        <div class="podium-container" id="podium-container">
+            <!-- Podium Card 2nd -->
+            <div class="glass-panel podium-card second">
+                <div class="podium-avatar-wrapper">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Faker" alt="2nd User" class="podium-avatar">
+                    <div class="podium-rank-badge">2</div>
+                </div>
+                <div class="podium-username">Faker</div>
+                <div class="podium-xp">980 XP</div>
+                <div class="podium-level">Level 10</div>
+            </div>
+
+            <!-- Podium Card 1st -->
+            <div class="glass-panel podium-card first animate-pulse-glow">
+                <div class="podium-avatar-wrapper">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=S1mple" alt="1st User" class="podium-avatar">
+                    <div class="podium-rank-badge">1</div>
+                </div>
+                <div class="podium-username">S1mple</div>
+                <div class="podium-xp">1,200 XP</div>
+                <div class="podium-level">Level 12</div>
+            </div>
+
+            <!-- Podium Card 3rd -->
+            <div class="glass-panel podium-card third">
+                <div class="podium-avatar-wrapper">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=TenZ" alt="3rd User" class="podium-avatar">
+                    <div class="podium-rank-badge">3</div>
+                </div>
+                <div class="podium-username">TenZ</div>
+                <div class="podium-xp">750 XP</div>
+                <div class="podium-level">Level 8</div>
+            </div>
+        </div>
+
+        <!-- Leaderboard Table and Search Filters -->
+        <div class="glass-panel" style="padding: 24px; margin-bottom: 50px;">
+            <div class="leaderboard-search-bar">
+                <div class="search-input-wrapper">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="leaderboard-search" class="search-input" placeholder="Search user rankings by username or favorite team...">
+                </div>
+            </div>
+
+            <div class="leaderboard-table-container">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>User</th>
+                            <th>Favorite Team</th>
+                            <th>Active Streak</th>
+                            <th>Level</th>
+                            <th>Total XP</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-tbody">
+                        <!-- Filled dynamically by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- JS Files -->
+    <script src="js/state.js"></script>
+    <script src="js/leaderboard.js"></script>
+</body>
+</html>
